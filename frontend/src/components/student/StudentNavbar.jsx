@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 const StudentNavbar = () => {
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);
+  const navigate = useNavigate();
 
   // Toggle function to handle the navbar's display
   const handleNav = () => {
@@ -13,20 +15,26 @@ const StudentNavbar = () => {
   const handleLogout = () => {
     // Logic for logout functionality
     alert('You have been logged out.');
+    navigate('/');
   };
 
   // Array containing navigation items
   const navItems = [
-    { id: 1, text: 'Select Mess' },
-    { id: 2, text: 'Previous Data' },
-    { id: 3, text: 'Selected Mess' },
-    { id: 4, text: 'Generate New QR' },
+    { id: 1, text: 'Select Mess', path: '/select-mess' },
+    { id: 2, text: 'Previous Data', path: '/previous-data' },
+    { id: 3, text: 'Selected Mess', path: '/selected-mess' },
+    { id: 4, text: 'Generate New QR', path: '/generate-qr' },
   ];
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setNav(false); // Close the mobile menu on navigation
+  };
 
   return (
     <div className='bg-black flex justify-between items-center h-16 max-w-[1440px] mx-auto px-2 mt-2 text-white'>
       {/* Logo */}
-      <h1 className='w-1/3 text-2xl font-bold text-[#00df9a]'>Student Dashboard</h1>
+      <h1 className='w-1/3 text-2xl font-bold text-[#00df9a] whitespace-nowrap'>Student Dashboard</h1>
 
       {/* Desktop Navigation */}
       <ul className='hidden md:flex'>
@@ -34,6 +42,7 @@ const StudentNavbar = () => {
           <li
             key={item.id}
             className='flex items-center p-2 hover:bg-[#00df9a] rounded-xl m-4 cursor-pointer duration-300 hover:text-black'
+            onClick={() => handleNavigation(item.path)}
           >
             {item.text}
           </li>
@@ -42,11 +51,12 @@ const StudentNavbar = () => {
         ))}
 
         <li
-          className=' hover:bg-[#00df9a] rounded-xl m-4 cursor-pointer duration-300 hover:text-black items-center'
+          className='rounded-xl m-4 cursor-pointer duration-300 hover:text-black items-center'
         >
           <button
             onClick={handleLogout}
             className='ml-4 bg-[#e34141] text-white px-4 py-2 my-2 mx-4 rounded-xl hover:bg-[#e34141] duration-300'
+
           >
             Logout
           </button>
@@ -73,7 +83,8 @@ const StudentNavbar = () => {
         {navItems.map(item => (
           <li
             key={item.id}
-            className='p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600'
+            className='p-2 border-b rounded-xl hover:bg-[#00df9a] m-2 duration-300 hover:text-black cursor-pointer border-gray-600'
+            onClick={() => handleNavigation(item.path)}
           >
             {item.text}
           </li>
@@ -82,7 +93,7 @@ const StudentNavbar = () => {
         <li className='p-4'>
           <button
             onClick={handleLogout}
-            className='w-full bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700 duration-300'
+            className='w-full bg-[#e34141] text-white px-4 py-2 rounded-xl hover:bg-red-700 duration-300'
           >
             Logout
           </button>
