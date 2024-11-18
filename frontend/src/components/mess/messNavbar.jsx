@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
-const StudentNavbar = () => {
+const MessNavbar = () => {
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);
   const navigate = useNavigate();
@@ -20,10 +20,8 @@ const StudentNavbar = () => {
 
   // Array containing navigation items
   const navItems = [
-    { id: 1, text: 'Select Mess', path: '/student/select-mess' },
-    { id: 2, text: 'Previous Data', path: '/student/previous-data' },
-    { id: 3, text: 'Selected Mess', path: '/student/selected-mess' },
-    { id: 4, text: 'Generate New QR', path: '/student/generate-qr' },
+    { id: 1, text: 'Mess Entry', path: '/mess/mess-entry' },
+    { id: 2, text: 'Mess Overall', path: '/mess/mess-overall' },
   ];
 
   const handleNavigation = (path) => {
@@ -34,7 +32,7 @@ const StudentNavbar = () => {
   return (
     <div className='bg-black flex fixed top-0 left-0 z-50 w-full justify-between items-center h-16 max-w-[1440px] mx-auto px-2 mt-2 text-white'>
       {/* Logo */}
-      <h1 className='w-1/3 text-2xl font-bold text-[#00df9a] whitespace-nowrap'>Student Dashboard</h1>
+      <h1 className='w-1/3 text-2xl font-bold text-[#00df9a] whitespace-nowrap'>Mess Dashboard</h1>
 
       {/* Desktop Navigation */}
       <ul className='hidden md:flex'>
@@ -77,7 +75,7 @@ const StudentNavbar = () => {
         }
       >
         {/* Mobile Logo */}
-        <h1 className='w-full text-xl font-bold text-[#00df9a] m-4'>Student Dashboard</h1>
+        <h1 className='w-full text-xl font-bold text-[#00df9a] m-4'>Mess Dashboard</h1>
 
         {/* Mobile Navigation Items */}
         {navItems.map(item => (
@@ -103,4 +101,4 @@ const StudentNavbar = () => {
   );
 };
 
-export default StudentNavbar;
+export default MessNavbar;

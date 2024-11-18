@@ -12,6 +12,11 @@ import Registration from './components/Registration.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import AdminLogin from './components/AdminLogin.jsx';
 import StudentDashboard from './components/student/studentDashboard.jsx';
+import MessDashboard from './components/mess/messDashboard.jsx';
+import AdminDashboard from './components/admin/adminDashboard.jsx';
+import SelectMess from './components/student/functions/selectMess.jsx';
+
+
 // import SignUp from './components/student/signup';
 // import SignInStudent from './components/student/signin';
 // import SignInAdmin from './components/mess/signin';
@@ -50,7 +55,7 @@ const router = createBrowserRouter([
       // Student Routes
       { path: 'student', element: <StudentDashboard />, children: [
           // { path: '', element: <StudentGuidelines /> },
-          // { path: 'select-mess', element: <StudentCorner /> },
+          { path: 'select-mess', element: <SelectMess /> },
           // { path: 'previous-data', element: <StudentPreviousData /> },
           // { path: 'selected-mess-data', element: <SelectedMessdata /> },
           // { path: 'generate-new-qr', element: <GenerateNewQR /> },
@@ -58,20 +63,20 @@ const router = createBrowserRouter([
       },
 
       // // Admin Routes
-      // { path: 'admin', element: <AdminCorner />, children: [
+      { path: 'admin', element: <AdminDashboard />, children: [
       //     { path: '', element: <AdminGuidelines /> },
       //     { path: 'register', element: <RegisterUser /> },
       //     { path: 'manage-students/*', element: <ManageStudents /> },
-      //   ]
-      // },
+        ]
+      },
 
       // // Mess Routes
-      // { path: 'mess', element: <MessCorner />, children: [
+      { path: 'mess', element: <MessDashboard />, children: [
       //     { path: '', element: <MessGuidelines /> },
       //     { path: 'mess-entry', element: <VerifyUser /> },
       //     { path: 'mess-overall', element: <MessOverAllStudents /> },
-      //   ]
-      // },
+        ]
+      },
 
       // // Redirect unknown routes to Home
       // { path: '*', element: <Navigate to="/" replace /> },
