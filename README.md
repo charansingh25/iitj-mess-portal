@@ -1,5 +1,7 @@
 # IITJ Mess Portal - Pay As You Eat 🍴
 
+<img src="./ReadmeAssets/home/register.png" alt="Register">
+
 ## **Overview**
 The IITJ Mess Portal addresses the challenges students face with the current fixed mess billing system. This project introduces a pay-as-you-eat system that tracks students' meals and generates bills based on actual consumption. 
 
@@ -31,6 +33,8 @@ Students, mess vendors, and admins are provided with specific functionalities to
 --- -->
 
 ## **Why this Mess Portal?**
+
+
 
 Students at IITJ often pay a fixed monthly mess bill, irrespective of actual meals consumed. This leads to financial inefficiencies and dissatisfaction due to skipped meals or dissatisfaction with food quality. The **Pay-As-You-Eat Mess Portal** solves this by:  
 1. **Tracking individual meals** to generate consumption-based bills.  
