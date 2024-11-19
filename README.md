@@ -97,7 +97,7 @@ The project follows the **Model-View-Controller (MVC)** architecture for efficie
 ### **Backend**
 1. Clone the repository:  
    ```bash
-   git clone <backend-repo-url>
+   git clone https://github.com/charansingh25/iitj-mess-portal.git
    cd backend
    ```
 
@@ -144,7 +144,7 @@ The project follows the **Model-View-Controller (MVC)** architecture for efficie
 ### **Frontend**
 1. Clone the repository:  
    ```bash
-   git clone <backend-repo-url>
+   git clone https://github.com/charansingh25/iitj-mess-portal.git
    cd frontend
    ```
 
