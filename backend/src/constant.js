@@ -22,7 +22,7 @@ export const validNewMessEmail = [
 
 export const messTime = {
   Breakfast: {
-    start: "07:45",
+    start: "06:45",
     end: "10:30",
   },
   Lunch: {

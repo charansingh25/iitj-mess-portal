@@ -1,17 +1,24 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "./GlobalContext";
+import { ToastContainer, toast } from "react-toastify";
+import { toastOptions } from "../constants/toastConfig";
+import { Loader2 } from "lucide-react";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminLogin() {
 
-//   const { globalVariable, setGlobalVariable } = useGlobalContext();
+  const { globalVariable, setGlobalVariable } = useGlobalContext();
   const [rollnumber, setRollNumber] = useState("");
   const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     try {
@@ -31,22 +38,30 @@ function AdminLogin() {
       const res = await response.json();
       // console.log(globalVariable);
       // console.log("api responce : ", res.data.authToken);
-    //   setGlobalVariable(res.data.authToken);
+      setGlobalVariable(res.data.authToken);
       // console.log("set global responce : ", globalVariable);
 
       if (response.ok && role == "admin") {
-        localStorage.setItem("user", JSON.stringify({ rollnumber })); // Save user details in local storage
+        setMessage("Login successful! (Login as Admin)");
+        toast.success("Login successful! Redirecting...", {...toastOptions});
+        // localStorage.setItem("user", JSON.stringify({ rollnumber })); // Save user details in local storage
         navigate("/admin"); 
       } else if (response.ok && role == "mess") {
-        localStorage.setItem("user", JSON.stringify({ rollnumber })); // Save user details in local storage
+        setMessage("Login successful! (Login as Mess)");
+        toast.success("Login successful! Redirecting...", {...toastOptions});
+        // localStorage.setItem("user", JSON.stringify({ rollnumber })); // Save user details in local storage
         navigate("/mess");
       } 
       else {
         setMessage(res.message || "Login failed!");
+        toast.error(res.message || "Login failed!", {...toastOptions});
       }
     } catch (error) {
       console.error("Error:", error);
       setMessage("An error occurred. Please try again later.");
+      toast.error("An error occurred. Please try again later", {...toastOptions});
+    } finally {
+      setIsLoading(false);
     }
   };
 //   useEffect(() => {
@@ -62,6 +77,7 @@ function AdminLogin() {
       className="flex flex-col h-full w-full text-pd dark:text-p py-12"
       onSubmit={handleSubmit}
     >
+      <ToastContainer />
       <input
         required
         type="text"
@@ -69,7 +85,7 @@ function AdminLogin() {
         id="email"
         name="email"
         value={email}
-        onChange={(e) => setRollNumber(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
         placeholder="Email Address"
       ></input>
       <select
@@ -100,9 +116,10 @@ function AdminLogin() {
         {/* <Link to="/:user"> */}
         <button
           type="submit"
-          className="w-full px-8 py-3 rounded-md text-w dark:bg-p bg-pd mr-4"
+          className="flex items-center justify-center space-x-12 w-full px-8 py-3 rounded-md text-w dark:bg-p bg-pd mr-4"
         >
-          Enter
+          {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+          {isLoading ? "Entering..." : "Enter"}
         </button>
       </div>
     </form>

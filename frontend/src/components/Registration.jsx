@@ -1,12 +1,13 @@
 import { useState } from "react";
 import {Link, useNavigate } from "react-router-dom";
-// import { useGlobalContext } from "../GlobalContext";
+import { useGlobalContext } from "./GlobalContext";
 import { Loader2 } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
+import { toastOptions } from "../constants/toastConfig";
 import "react-toastify/dist/ReactToastify.css";
 
 function Registration() {
-  // const { globalVariable, setGlobalVariable } = useGlobalContext();
+  const { globalVariable, setGlobalVariable } = useGlobalContext();
   const [email, setEmail] = useState("");
   const [rollnumber, setRollNumber] = useState("");
   const [password, setPassword] = useState("");
@@ -49,21 +50,21 @@ function Registration() {
       const data = await response.json();
 
       if (response.ok) {
-        // setGlobalVariable(data.data.authToken);
+        setGlobalVariable(data.data.authToken);
         setMessage("User registered successfully!");
 
         // Show success toast and navigate after a short delay
-        toast.success("Registration successful! Redirecting...");
+        toast.success("Registration successful! Redirecting...", {...toastOptions});
         setTimeout(() => {
           navigate("/student");
         }, 2000);
       } else {
         setMessage(data.message || "Registration failed!");
-        toast.error(data.message || "Registration failed!");
+        toast.error(data.message || "Registration failed!", {...toastOptions});
       }
     } catch (error) {
       setMessage("An error occurred. Please try again later.");
-      toast.error("An error occurred. Please try again later.");
+      toast.error("An error occurred. Please try again later.", {...toastOptions});
     } finally {
       setIsLoading(false);
     }
@@ -71,6 +72,7 @@ function Registration() {
 
     return (
         <form className='flex flex-col h-full w-full text-pd py-12 dark:text-p' onSubmit={handleSubmit}>
+          {/* <ToastContainer /> */}
             <input
                 className="w-full bg-w p-3 rounded-md mb-4 dark:bg-b"
                 type="text"
@@ -121,7 +123,7 @@ function Registration() {
 
             <button
                 type="submit"
-                className="w-full px-8 py-3 rounded-md text-w bg-pd mr-4 dark:bg-p"
+                className="flex items-center justify-center space-x-12 w-full px-8 py-3 rounded-md text-w bg-pd mr-4 dark:bg-p"
                 disabled={isLoading}
             >
                 {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}

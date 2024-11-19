@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from './../GlobalContext.jsx';
 
 const MessNavbar = () => {
   // State to manage the navbar's visibility
+  const { globalVariable, setGlobalVariable } = useGlobalContext();
   const [nav, setNav] = useState(false);
   const navigate = useNavigate();
 
@@ -14,7 +16,8 @@ const MessNavbar = () => {
 
   const handleLogout = () => {
     // Logic for logout functionality
-    alert('You have been logged out.');
+    // alert('You have been logged out.');
+    setGlobalVariable('');
     navigate('/');
   };
 

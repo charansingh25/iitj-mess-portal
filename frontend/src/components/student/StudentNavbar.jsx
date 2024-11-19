@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from './../GlobalContext.jsx';
 
 const StudentNavbar = () => {
   // State to manage the navbar's visibility
+  const { globalVariable, setGlobalVariable } = useGlobalContext();
   const [nav, setNav] = useState(false);
   const navigate = useNavigate();
 
@@ -14,7 +16,8 @@ const StudentNavbar = () => {
 
   const handleLogout = () => {
     // Logic for logout functionality
-    alert('You have been logged out.');
+    // alert('You have been logged out.');
+    setGlobalVariable('');
     navigate('/');
   };
 
@@ -23,7 +26,7 @@ const StudentNavbar = () => {
     { id: 1, text: 'Select Mess', path: '/student/select-mess' },
     { id: 2, text: 'Previous Data', path: '/student/previous-data' },
     { id: 3, text: 'Selected Mess', path: '/student/selected-mess' },
-    { id: 4, text: 'Generate New QR', path: '/student/generate-qr' },
+    { id: 4, text: 'Generate New QR', path: '/student/generate-new-qr' },
   ];
 
   const handleNavigation = (path) => {

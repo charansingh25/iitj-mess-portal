@@ -3,6 +3,8 @@ import { Link , useNavigate} from "react-router-dom";
 import { Outlet, Route, Routes } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { toggle } from "../features/themeSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Registration from "./Registration";
 import landingImg from "../assets/landing-img-new.png";
 
@@ -33,8 +35,9 @@ function Home() {
   };
   return (
     <div className="w-screen min-h-screen bg-bd dark:bg-bd relative overflow-auto flex flex-col items-center justify-center">
-      <div className="w-full bg-pd dark:bg-p opacity-30 dark:blur-[150px] aspect-square absolute -bottom-10 -left-24 rounded-full blur-3xl" />
-      <div className="w-1/2 bg-pd dark:bg-p opacity-20 dark:blur-[150px] aspect-square absolute -top-36 -right-40 rounded-full blur-3xl" />
+      <ToastContainer />
+      {/* <div className="w-full bg-pd dark:bg-p opacity-30 dark:blur-[150px] aspect-square absolute -bottom-10 -left-24 rounded-full blur-3xl" /> */}
+      {/* <div className="w-1/2 bg-pd dark:bg-p opacity-20 dark:blur-[150px] aspect-square absolute -top-36 -right-40 rounded-full blur-3xl" /> */}
 
       <div className=" absolute inset-0 flex flex-col items-center">
         <h1 className=" text-wd dark:text-p text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-wider font-black py-8 text-center">
@@ -70,6 +73,7 @@ function Home() {
           rounded-lg px-4 sm:px-6 md:px-8 lg:px-10
           relative flex flex-col justify-center items-center overflow-y-auto mt-32"
       >
+
         <Outlet />
       </div>
     </div>

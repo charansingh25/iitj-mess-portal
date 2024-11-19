@@ -7,7 +7,7 @@ export let dbInstance = undefined;
 const connectDB = async () => {
   try {
     const connectionInstance = await mongoose.connect(
-      `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASS}@cluster0.k4cy9.mongodb.net/`
+      `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASS}@cluster0.k4cy9.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority&appName=software1`
     );
     dbInstance = connectionInstance;
     console.log(

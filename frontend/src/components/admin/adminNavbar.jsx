@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from './../GlobalContext.jsx';
 
 const AdminNavbar = () => {
   // State to manage the navbar's visibility
+  const { globalVariable, setGlobalVariable } = useGlobalContext();
   const [nav, setNav] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const navigate = useNavigate();
@@ -15,18 +17,19 @@ const AdminNavbar = () => {
 
   const handleLogout = () => {
     // Logic for logout functionality
-    alert('You have been logged out.');
+    // alert('You have been logged out.');
+    setGlobalVariable('');
     navigate('/');
   };
 
   // Array containing navigation items
   const navItems = [
-    { id: 1, text: 'Register', path: '/register' },
+    { id: 1, text: 'Register', path: '/admin/register' },
     { id: 2, text: 'Manage Students',
         subItems: [
-            { id: 1, text: 'Overall Data', path: '/admin/overall-data' },
-            { id: 2, text: 'Search Date', path: '/admin/search-date' },
-            { id: 3, text: 'Search Roll', path: '/admin/search-rollnumber' },
+            { id: 1, text: 'Overall Data', path: '/admin/manage-students/overall-data' },
+            { id: 2, text: 'Search Date', path: '/admin/manage-students/search-by-date' },
+            { id: 3, text: 'Search Roll', path: '/admin/manage-students/search-by-roll' },
           ],
     },
   ];
