@@ -81,39 +81,39 @@ const StudentPreviousData = () => {
         {mealData &&
           Object.entries(mealData).map(([date, details]) => (
             <div className="px-6 py-4" key={date}>
-              <div className="bg-white rounded-lg shadow-lg overflow-x-auto max-w-2xl mx-auto">
+              <div className="bg-white w-full rounded-lg shadow-[0_0px_8px_rgba(0,233,154)] overflow-x-auto max-w-2xl mx-auto">
                 <table className="min-w-full">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="py-3 px-4 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
                         Mess Name
                       </th>
                       {mealTypes.map((type) => (
                         <th
                           key={type}
-                          className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                          className="py-3 px-4 text-left text-base font-medium text-gray-500 uppercase tracking-wider"
                         >
                           {type}
                         </th>
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="bg-white">
-                    <tr className="hover:bg-gray-50">
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    <tr className="hover:bg-[#334942]">
                       <td className="py-4 px-4 whitespace-nowrap text-black font-medium">
                         {details.messName}
                       </td>
                       {mealTypes.map((type) => (
                         <td
                           key={type}
-                          className="py-4 px-4 whitespace-nowrap text-center"
+                          className="py-4 px-4 whitespace-nowrap text-xl text-center"
                         >
                           {details.mealsTaken.some(
                             (meal) => meal.type === type
                           ) ? (
-                            <span className="text-green-600 text-xl">✓</span>
+                            <span className="text-[#00df9a] font-bold">✓</span>
                           ) : (
-                            <span className="text-red-600 text-xl">✗</span>
+                            <span className="text-[#ff3932] font-bold">✗</span>
                           )}
                         </td>
                       ))}
