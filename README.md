@@ -2,6 +2,11 @@
 
 <img src="./ReadmeAssets/home/register.png" alt="Register">
 
+---
+
+### Live : [https://iitj-mess-portal.vercel.app/](https://iitj-mess-portal.vercel.app/)
+### Backend : [https://iitj-mess-portal.onrender.com](https://iitj-mess-portal.onrender.com)
+
 ## **Overview**
 The IITJ Mess Portal addresses the challenges students face with the current fixed mess billing system. This project introduces a pay-as-you-eat system that tracks students' meals and generates bills based on actual consumption. 
 
